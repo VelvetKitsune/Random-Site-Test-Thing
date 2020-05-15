@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Second Page</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    <link rel="stylesheet" type="text/css" href="cssStyles.css">
+
+
+  </style>
+
+  <script id="insert"></script>
+
+
+    <script>
+      const customConsole = (w) => {
+        const pushToConsole = (payload, type) => {
+          w.parent.postMessage({
+            console: {
+              payload: payload,
+              type:    type
+            }
+          }, "*")
+        }
+
+        w.onerror = (message, url, line, column) => {
+          // the line needs to correspond with the editor panel
+          // unfortunately this number needs to be altered every time this view is changed
+          line = line - 79
+          if (line < 0){
+            pushToConsole(message, "error")
+          } else {
+            pushToConsole(`[${line}:${column}] ${message}`, "error")
+          }
+        }
+
+        w.console = (function(){
+          return {
+            log: (payload) => {
+              pushToConsole(payload, "log")
+            },
+            info: (payload) => {
+              pushToConsole(payload, "info")
+            },
+            warn: (payload) => {
+              pushToConsole(payload, "warn")
+            },
+            error: (payload) => {
+              pushToConsole(payload, "error")
+            },
+            system: (payload) => {
+              pushToConsole(payload, "system")
+            }
+          }
+        }())
+
+        console.system("Running fiddle")
+      }
+
+      if (window.parent){
+        customConsole(window)
+      }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="1" height="1"></canvas>
+  <h1 id="myHeading" class="text-center">
+    Second Page!
+  </h1>
+    <div class="text-border">
+      <p class="text-block">
+        This is the second page, it is a bit useless though. All it really does is look weird and a new pattern occurs every time you visit.
+      </p>
+    </div>
+      <p>
+  <a href="index.html" >Here is your ticket back to the main page with actual stuff..</a>
+  </p>
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">//<![CDATA[
+
+    
+// Creates a canvas element, acts as a sort of image.
+var c = document.getElementById("myCanvas");
+// Creates a context for 2D elements, a way to set up the ability to draw objects on it.
+var ctx = c.getContext("2d");
+
+// Get the canvas element form the page
+var canvas = document.getElementById("myCanvas");
+ 
+/* Resize the canvas to occupy the full page, 
+   by getting the widow width and height and setting it to canvas*/
+ 
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+ 
+//Done! Enjoy full page canvas! ~ HEMANTH.HM
+
+//More things on the screen! As a rule of thumb the more there are the more lag will occur
+var numberOfBalls = 300;
+var maxSize = 75;
+var colourList = ["lightblue", "violet", "grey", "silver"];
+
+var balls = [];
+
+class ball {
+  constructor(size, colour, speed, position_x, position_y) {
+    console.log("hello");
+    this.size = size;
+    this.colour = colour;
+    this.speed = speed;
+    this.position_x = position_x;
+    this.position_y = position_y;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.position_x, this.position_y, this.size, 0, 2 * Math.PI, false);
+    ctx.fillStyle = this.colour;
+    ctx.fill();
+  }
+
+}
+
+for (var i = 0; i < numberOfBalls; i++) {
+  var size = Math.floor((Math.random() * maxSize) + 1);
+  var newColour = colourList[Math.floor((Math.random() * colourList.length))];
+  var x = Math.random() * c.width;
+  var y = Math.random() * c.height;
+  balls[i] = new ball(size, newColour, 0, x, y)
+}
+
+console.log(balls);
+
+for (var i = 0; i < balls.length; i++) {
+  balls[i].draw();
+}
+
+
+
+
+
+
+
+
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "wuk8ovtd"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
+
+</body>
+</html>

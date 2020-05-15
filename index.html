@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Random Page For Random People</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+    <link rel="stylesheet" type="text/css" href="cssStyles.css">
+
+
+
+  <script id="insert"></script>
+
+
+    <script>
+      const customConsole = (w) => {
+        const pushToConsole = (payload, type) => {
+          w.parent.postMessage({
+            console: {
+              payload: payload,
+              type:    type
+            }
+          }, "*")
+        }
+
+        w.onerror = (message, url, line, column) => {
+          // the line needs to correspond with the editor panel
+          // unfortunately this number needs to be altered every time this view is changed
+          line = line - 79
+          if (line < 0){
+            pushToConsole(message, "error")
+          } else {
+            pushToConsole(`[${line}:${column}] ${message}`, "error")
+          }
+        }
+
+        w.console = (function(){
+          return {
+            log: (payload) => {
+              pushToConsole(payload, "log")
+            },
+            info: (payload) => {
+              pushToConsole(payload, "info")
+            },
+            warn: (payload) => {
+              pushToConsole(payload, "warn")
+            },
+            error: (payload) => {
+              pushToConsole(payload, "error")
+            },
+            system: (payload) => {
+              pushToConsole(payload, "system")
+            }
+          }
+        }())
+
+        console.system("Running fiddle")
+      }
+
+      if (window.parent){
+        customConsole(window)
+      }
+    </script>
+</head>
+<body>
+    <!-- div is a generic HTML element, meaning 'division', or 'divide' -->
+    <div id="page-container">
+      <!-- h1 = header 1, the largest HTML heading tags, it would follow that h2, h3, h4 would be headers 2, 3, and 4 respectively, successively getting smaller -->
+      <!-- Section 1 -->
+      <h1 id="myHeading" class="text-center">
+        Random Website Thing!
+      </h1>
+      <br>
+      <div>
+        <img id="myImage" src="VKcover.png">
+      </div>
+      <div>
+        <!-- Section 2 -->
+        <div>
+          <div class="text-border text-center">
+            <p class="text-block">
+              Big button of nothingness
+            </p>
+          </div>
+          <p>
+            This is a big button, but it doesn't actually do anything but lead to this same page-- how mysterious.
+          </p>
+          <div class="style-as-button">
+            <a href=".">This very page</a>
+          </div>
+          <!-- Section 3 -->
+          <div>
+            <div class="text-border text-center">
+              <p class="text-block">
+                Second button
+              </p>
+            </div>
+            <p>
+              This button changes colours upon click, along with other various tricks, though it only seems to work when it feels like it. Very mysterious.
+            </p>
+            <div class="style-as-button" id="myButton">
+              This is a button
+            </div>
+            <!-- Section 4 -->
+            <div>
+              <div class="text-border text-center">
+                <p class="text-block">
+                  Second page
+                </p>
+              </div>
+              <p>
+                <a href="secondpage.html">A link to the second page! clicking on it is rather imperative to get to the new page since, as it stands now, it is the only link to it.</a>
+              </p>
+              <!-- Section 5 -->
+              <div>
+                <div class="text-border text-center">
+                  <p class="text-block">
+                    Challenges complete and learned!
+                  </p>
+                </div>
+                <ol>
+                  <li>Signed up for Github</li>
+                  <li>Signed up for jsfiddle</li>
+                  <li>Signed up for Free code camp</li>
+                  <li>Completed 6 HTML problems</li>
+                  <li>Completed 6 CSS problems</li>
+                  <li>Completed 16 Javascript problems</li>
+                  <li>Started webpage in jsfiddle</li>
+                  <li>Added headings using the "h1" tag</li>
+                  <li>Added some styes to headings using CSS</li>
+                  <li>Added a "p" tags and wrote some text about site</li>
+                  <li>Have colour palettes and add some colour</li>
+                  <li>Created a menu which somewhat works</li>
+                  <li>Created a free logo using <a href="https://www.namecheap.com/">Namecheap Free logo maker</a></li>
+                  <li>Added some simple javascript: make a button that changes colour when clicked</li>
+                  <li>Added an image to your page</li>
+                  <li>Created a github repository for code</li>
+                  <li>Added an image asset to github repo</li>
+                  <li>Added the image from github repo to site</li>
+                  <li>Added site code to github repository</li>
+                  <li>Hosted site on github</li>
+                  <li>Created a second page in jsfiddle</li>
+                  <li>Added second page to github repo</li>
+                  <li>Fixed links between pages</li>
+                  <li>Created a universal css file</li>
+                </ol>
+                <p class="text-block">
+                  To-do
+                </p>
+              </div>
+              <ol>
+                <li>Create a universal javascript file</li>
+              </ol>
+            </div>
+            <!-- Section 6 -->
+            <div class="text-border">
+              <p class="text-block">
+                Greetings! This is a test site that also contains links for coding and learning to do so. Wonderful!
+              </p>
+            </div>
+            <!-- Section 7 / column-container will hold 4 columns -->
+            <div id="column-container">
+              <h2 class="text-center">
+                Neat Links
+              </h2>
+              <div class="columnsClass">
+                <h4 class="text-center">
+                  For coding
+                </h4>
+                <div class="vertical-menu">
+                  <a href="https://github.com/">Github</a>
+                  <a href="https://jsfiddle.net/">JSFiddle</a>
+                  <a href="https://google.com">Google</a>
+                </div>
+              </div>
+              <div class="columnsClass">
+                <h4 class="text-center">
+                  For problem solving
+                </h4>
+                <div class="vertical-menu">
+                  <a href="https://stackoverflow.com/">Stack Overflow</a>
+                  <a href="https://www.w3schools.com/">W3Schools</a>
+                  <a href="https://google.com">Google</a>
+                </div>
+              </div>
+              <div class="columnsClass">
+                <h4 class="text-center">
+                  For Learning
+                </h4>
+                <div class="vertical-menu">
+                  <a href="https://www.freecodecamp.org/">Free Code Camp</a>
+                  <a href="https://google.com">Google</a>
+                </div>
+              </div>
+              <div class="columnsClass">
+                <h4 class="text-center">
+                  For Fun
+                </h4>
+                <div class="vertical-menu">
+                  <a href="https://www.namecheap.com/">Namecheap Free logo maker</a>
+                  <a href="https://google.com">Google</a>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!-- Section 8 -->
+            <div class="text-border">
+              <p class="text-block">
+                End of page.
+              </p>
+            </div>
+          </div>
+
+
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">//<![CDATA[
+
+
+var element = document.getElementById('myHeading'); // grab a reference to your element
+
+function IveBeenClicked() {
+  element.style.color = "white"
+}
+
+
+element.addEventListener('click', IveBeenClicked); // associate the function above with the click event
+
+// this code adds interaction to my button element
+var myButtonEl = document.getElementById('myButton');
+var name = "";
+console.log("test");
+console.log(myButtonEl);
+var colourList = ["red", "blue", "green", "yellow", "pink"];
+var colourListIndex = 1;
+
+function ButtonClicked() {
+  colourListIndex = colourListIndex + 1;
+  if (colourListIndex == colourList.length) {
+    colourListIndex = 0;
+  }
+  myButtonEl.style.backgroundColor = colourList[colourListIndex];
+  // if statements ask a question that must resolve to true or false
+  /* if (myButtonEl.style.backgroundColor == "blue") {
+    myButtonEl.style.backgroundColor = "orange";
+    alert("the button colour is " + myButtonEl.style.backgroundColor);
+  } else {
+    myButtonEl.style.backgroundColor = "blue";
+  } */
+  /* name = prompt("what is your name?");
+  console.log(name);
+  myButtonEl.innerHTML = "Hello " + name; */
+  // background-color backgroundColor background_color
+}
+myButtonEl.addEventListener('click', ButtonClicked);
+
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "x2mwak84"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+    <script>
+      let allLines = []
+
+      window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+      })
+    </script>
+
+</body>
+</html>
